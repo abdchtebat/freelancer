@@ -35,7 +35,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # Charger le modèle
 with open('random_forest_model.pkl', 'rb') as fil:
-    model = pickle.load(fil)
+    model = joblib.load(fil)
 
 # Initialiser LabelEncoder
 label_encoder = LabelEncoder()
