@@ -12,26 +12,26 @@ from sklearn.preprocessing import LabelEncoder
 
 # # Chemin de ton image téléchargée
 # image_path = "/Users/abderhmanchtebat/Documents/2.png"  # Mets le chemin correct ici
-image_path = "Documents/2.png" 
+# image_path = "Documents/2.png" 
 
-# Convertir l'image en base64
-with open(image_path, "rb") as image_file:
-    img = image_file.read()
-    img_b64 = base64.b64encode(img).decode()
+# # Convertir l'image en base64
+# with open(image_path, "rb") as image_file:
+#     img = image_file.read()
+#     img_b64 = base64.b64encode(img).decode()
 
-# Ajouter l'image en arrière-plan
-page_bg_img = f"""
-<style>
-[data-testid="stAppViewContainer"] {{
-background-image: url("data:image/jpeg;base64,{img_b64}");
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-}}
-</style>
-"""
+# # Ajouter l'image en arrière-plan
+# page_bg_img = f"""
+# <style>
+# [data-testid="stAppViewContainer"] {{
+# background-image: url("data:image/jpeg;base64,{img_b64}");
+# background-size: cover;
+# background-position: center;
+# background-repeat: no-repeat;
+# }}
+# </style>
+# """
 
-st.markdown(page_bg_img, unsafe_allow_html=True)
+# st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
 # Charger le modèle
