@@ -41,7 +41,7 @@ with open('random_forest_model.pkl', 'rb') as fil:
 label_encoder = LabelEncoder()
 
 # Charger le fichier CSV
-ht = pd.read_csv("/Users/abderhmanchtebat/Desktop/AI M107/streamlit/flask/freelancer_earnings_bd.csv")
+ht = pd.read_csv("freelancer_earnings_bd.csv")
 
 # Titre de l'application
 st.markdown("<h1 style='color: #0f0503;'>Freelancer Earnings Prediction</h1>", unsafe_allow_html=True)
