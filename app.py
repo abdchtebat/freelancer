@@ -12,6 +12,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # # Chemin de ton image téléchargée
 # image_path = "/Users/abderhmanchtebat/Documents/2.png"  # Mets le chemin correct ici
+image_path = "Documents/2.png" 
 
 # # Convertir l'image en base64
 # with open(image_path, "rb") as image_file:
