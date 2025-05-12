@@ -7,41 +7,24 @@ import joblib
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import LabelEncoder
+import os
 
-
-# # Chemin de ton image téléchargée
-# image_path = "/Users/abderhmanchtebat/Documents/2.png"  # Mets le chemin correct ici
-
-# # Convertir l'image en base64
-# with open(image_path, "rb") as image_file:
-#     img = image_file.read()
-#     img_b64 = base64.b64encode(img).decode()
-
-# # Ajouter l'image en arrière-plan
-# page_bg_img = f"""
-# <style>
-# [data-testid="stAppViewContainer"] {{
-# background-image: url("data:image/jpeg;base64,{img_b64}");
-# background-size: cover;
-# background-position: center;
-# background-repeat: no-repeat;
-# }}
-# </style>
-# """
-
-# st.markdown(page_bg_img, unsafe_allow_html=True)
-
-
-# Charger le modèle
-model_path = "/mnt/data/random_forest_model.pkl"  # Vérifiez si ce fichier existe dans ce répertoire
-model = joblib.load(model_path)
-
+# Vérification et chargement du modèle
+model_path = "/mnt/data/random_forest_model.pkl"  # Assurez-vous que ce fichier existe dans ce répertoire
+if os.path.exists(model_path):
+    model = joblib.load(model_path)
+else:
+    st.error(f"Le modèle n'a pas été trouvé à l'emplacement {model_path}")
 
 # Initialiser LabelEncoder
 label_encoder = LabelEncoder()
 
-# Charger le fichier CSV
-ht = pd.read_csv("freelancer_earnings_bd.csv")
+# Vérification et chargement du fichier CSV
+csv_path = "/mnt/data/freelancer_earnings_bd.csv"  # Assurez-vous que ce fichier est téléchargé dans Streamlit Cloud
+if os.path.exists(csv_path):
+    ht = pd.read_csv(csv_path)
+else:
+    st.error(f"Le fichier CSV n'a pas été trouvé à l'emplacement {csv_path}")
 
 # Titre de l'application
 st.markdown("<h1 style='color: #0f0503;'>Freelancer Earnings Prediction</h1>", unsafe_allow_html=True)
@@ -109,10 +92,9 @@ if 'form_shown' in st.session_state and st.session_state.form_shown:
 
                 # Affichage du résultat
                 if prediction[0] == 1:  # High Rehire Rate (likely higher earnings)
-                    st.success(f"Le freelancer devrait probablement générer des gains Faibles.")
+                    st.success(f"Le freelancer devrait probablement générer des gains faibles.")
                 else:  # Low Rehire Rate (likely lower earnings)
                     st.success(f"Le freelancer devrait probablement générer des gains élevés.")
-
 
 # Section de visualisation
 if st.button('Visualisation'):
@@ -187,6 +169,7 @@ if st.button('Visualisation'):
     plt.ylabel('Fréquence')
     plt.grid(True)
     st.pyplot(plt)
+
 
 
 
