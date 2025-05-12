@@ -33,7 +33,7 @@ from sklearn.preprocessing import LabelEncoder
 
 
 # Charger le modèle
-model_path = "/mnt/data/random_forest_model.pkl" 
+model_path = "/mnt/data/random_forest_model.pkl"  # Vérifiez si ce fichier existe dans ce répertoire
 model = joblib.load(model_path)
 
 
